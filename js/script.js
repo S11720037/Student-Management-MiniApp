@@ -92,8 +92,30 @@ submit_button.addEventListener('click',() =>{
 	let student_faculty = document.querySelector("#faculty-form").options[document.querySelector("#faculty-form").selectedIndex].value;
 	let student_program_study = document.querySelector("#program-study-form").options[document.querySelector("#program-study-form").selectedIndex].value;;
 
-	console.log(student_program_study);
+	
+	//validating form data
+	if(/^\d+$/.test(student_nim) != true){
+		alert("Invalin Student NIM");
+		return;
+	}
+
+	if(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/.test(student_name) != true){
+		alert("Invalid Student Name");
+		return;
+	}
+
+	if(student_faculty == '-- SELECT FACULTY --'){
+		alert("Invalid Faculty");
+		return;
+	}
+
+	if(student_program_study == '-- SELECT PROGRAM OF STUDY --'){
+		alert("Invalid Program Study");
+		return;
+	}
+
 });
+
 
 
 
