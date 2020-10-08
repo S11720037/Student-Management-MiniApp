@@ -1,2 +1,3 @@
 # Student-Management-MiniApp
-Front-end Web Development Mid Exam
+
+Tugas mid semester untuk mata kuliah Front-end Web Development Universitas Klabat.
