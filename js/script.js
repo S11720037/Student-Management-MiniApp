@@ -80,3 +80,22 @@ faculty_option.addEventListener('change',function(e){
 	}
 });
 //end faculties and program study
+
+
+//gel all from value
+const submit_button = document.querySelector("#submit-button");
+
+submit_button.addEventListener('click',() =>{
+	let student_nim = document.querySelector("#NIM").value;
+	let student_name = document.querySelector("#full-name").value;
+	let student_gender = document.querySelector('input[name="gender"]:checked').value;
+	let student_faculty = document.querySelector("#faculty-form").options[document.querySelector("#faculty-form").selectedIndex].value;
+	let student_program_study = document.querySelector("#program-study-form").options[document.querySelector("#program-study-form").selectedIndex].value;;
+
+	console.log(student_program_study);
+});
+
+
+
+
+
