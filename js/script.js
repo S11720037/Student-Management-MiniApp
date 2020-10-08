@@ -71,7 +71,12 @@ faculty_option.addEventListener('change',function(e){
 		});
 	}
 	else{
-		// console.log('');
+		program_study.innerHTML = '';
+
+		let tag = document.createElement('option');
+		let text = document.createTextNode("-- SELECT PROGRAM OF STUDY --");
+		tag.appendChild(text);
+		program_study.appendChild(tag);
 	}
 });
 //end faculties and program study
