@@ -1,6 +1,6 @@
 // show hide form
 const show_hide_form = document.querySelector("#show-hide-button");
-const form = document.querySelector("#form");
+const form = document.querySelector("form");
 
 show_hide_form.addEventListener("click", function(){
 
