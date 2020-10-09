@@ -89,8 +89,7 @@ faculty_option.addEventListener('change',function(e){
 //end faculties and program study
 
 
-//get all from data
-const students = [
+let students = [
 	{
 		nim: '105021810020',
 		name: 'Tendean Arter',
@@ -119,29 +118,31 @@ const students = [
 		faculty: 'Computer Science',
 		program_study: 'Informatics',
 	},
-	{
-		nim: '105021810024',
-		name: 'Echidna',
-		gender: 'Female',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	},
-	{
-		nim: '105021810025',
-		name: 'Felix Argyle',
-		gender: 'Male',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	},
-	{
-		nim: '105021810026',
-		name: 'Ram',
-		gender: 'Female',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	}
+	// {
+	// 	nim: '105021810024',
+	// 	name: 'Echidna',
+	// 	gender: 'Female',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// },
+	// {
+	// 	nim: '105021810025',
+	// 	name: 'Felix Argyle',
+	// 	gender: 'Male',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// },
+	// {
+	// 	nim: '105021810026',
+	// 	name: 'Ram',
+	// 	gender: 'Female',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// }
 ]
 
+
+//get all from data
 const submit_button = document.querySelector("#submit-button");
 
 submit_button.addEventListener('click',() => {
@@ -173,7 +174,7 @@ submit_button.addEventListener('click',() => {
 		return;
 	}
 
-	//append valid form to student list
+	//append valid form data to student list
 	students.push({
 		nim: student_nim,
 		name: student_name,
@@ -226,11 +227,18 @@ update_student_list();
 
 //delete row
 function delete_row(btn) {
-  var row = btn.parentNode.parentNode;
-  row.parentNode.removeChild(row);
+	var row = btn.parentNode.parentNode;
 
-  //dont forget to delete this data from list
-  students.splice(row.rowIndex-1,1)
+	student_nim = (row.querySelector("tr td").textContent);
+
+	students = students.filter((s) =>{
+		return s.nim != student_nim;
+	});
+
+	update_student_list();
+
+	//don't forget to reset input text
+	document.querySelector("#search-student-form").reset();
 
 }
 //end delete row
@@ -248,7 +256,6 @@ search_student.addEventListener("input",() => {
 
 		//filter the student
 		let filtered_students = students.filter((s) => {
-			// console.log(s.name.toLowerCase().includes('baru'));
 			return s.name.toLowerCase().includes(search_student.value.toLowerCase());
 		});
 
@@ -264,7 +271,7 @@ search_student.addEventListener("input",() => {
 				tr.appendChild(td);
 			}
 			
-			//action
+			//action #delete, 
 			let action = document.createElement("td");
 			let trash_icon = `<button type="button" onclick="delete_row(this)" class="btn btn-danger"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/> </svg></button>`
 			action.innerHTML = trash_icon;
@@ -272,8 +279,19 @@ search_student.addEventListener("input",() => {
 
 			student_list.appendChild(tr);
 		}
+
 	}
 });
+
+//disable "Enter"
+search_student.addEventListener('keydown',(e) =>{
+	if(e.keyCode == 13){
+		e.preventDefault();
+	}
+
+	return false;
+});
+
 //end search student by name
 
 
