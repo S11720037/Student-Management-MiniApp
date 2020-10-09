@@ -296,20 +296,23 @@ search_student.addEventListener('keydown',(e) =>{
 
 //student filter
 const filter_by_faculty = document.querySelector("#filter-by-faculty");
-const filter_by_program_study = document.querySelector("#filter-by-program-study");
 
-for(data of faculties){
+for(i of faculties){
 	const parent = document.createElement("option");
-	const child = document.createTextNode(data.name);
-	parent.appendChild(child);
+	const child = document.createTextNode(i.name);
+	parent.append(child);
 	filter_by_faculty.appendChild(parent);
-
-	for(program_study of data.sub){
-		const parent = document.createElement("option");
-		const child = document.createTextNode(program_study);
-		parent.appendChild(child);
-		filter_by_program_study.appendChild(parent);
-	}
-
 }
+
+const filter_faculty_button = document.querySelector("#filter-faculty-button");
+filter_faculty_button.addEventListener("click",() => {
+	const selected_faculty = filter_by_faculty.options[filter_by_faculty.selectedIndex].value
+
+	//update student list
+	if(selected_faculty != "-- SELECT FACULTY --"){
+
+		// time to rest
+
+	}
+});
 
