@@ -90,12 +90,19 @@ const students = [
 		gender: 'Male',
 		faculty: 'Computer Science',
 		program_study: 'Informatics',
+	},
+	{
+		nim: '105021810020',
+		name: 'Tendean Arter',
+		gender: 'Male',
+		faculty: 'Computer Science',
+		program_study: 'Informatics',
 	}
 ]
 
 const submit_button = document.querySelector("#submit-button");
 
-submit_button.addEventListener('click',() =>{
+submit_button.addEventListener('click',() => {
 	let student_nim = document.querySelector("#NIM").value;
 	let student_name = document.querySelector("#full-name").value;
 	let student_gender = document.querySelector('input[name="gender"]:checked').value;
@@ -133,8 +140,11 @@ submit_button.addEventListener('click',() =>{
 		program_study: student_program_study,
 	});
 
+	//update student list and reset form data
 	alert("Success");
 	update_student_list();
+	document.querySelector("form").reset();
+
 
 });
 //end get all from data
@@ -158,13 +168,31 @@ function update_student_list(){
 
 			tr.appendChild(td);
 		}
-		
+
+
+		//action
+		let action = document.createElement("td");
+		let trash_icon = `<button type="button" onclick="delete_row(this)" class="btn btn-danger"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/> </svg></button>`
+		action.innerHTML = trash_icon;
+		tr.appendChild(action);
+
 		student_list.appendChild(tr);
 	}
 }
-
 update_student_list();
+//end display all students
 
+
+//delete row
+function delete_row(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+
+  //dont forget to delete this data from list
+  students.splice(row.rowIndex-1,1)
+
+}
+//end delete row
 
 
 
