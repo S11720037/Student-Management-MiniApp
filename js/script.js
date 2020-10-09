@@ -82,7 +82,17 @@ faculty_option.addEventListener('change',function(e){
 //end faculties and program study
 
 
-//gel all from value
+//get all from data
+const students = [
+	{
+		nim: '105021810020',
+		name: 'Arter Tendean',
+		gender: 'Male',
+		faculty: 'Computer Science',
+		program_study: 'Informatics',
+	}
+]
+
 const submit_button = document.querySelector("#submit-button");
 
 submit_button.addEventListener('click',() =>{
@@ -114,9 +124,46 @@ submit_button.addEventListener('click',() =>{
 		return;
 	}
 
+	//append valid form to student list
+	students.push({
+		nim: student_nim,
+		name: student_name,
+		gender: student_gender,
+		faculty: student_faculty,
+		program_study: student_program_study,
+	});
+
+	alert("Success");
+	update_student_list();
+
 });
+//end get all from data
 
 
+//display all students
+const student_list = document.querySelector("#student-list");
+
+function update_student_list(){
+
+	student_list.innerHTML = "";
+
+	for(student of students){
+
+		let tr = document.createElement("tr");
+
+		for(key in student){
+
+			let td = document.createElement("td");
+			td.appendChild(document.createTextNode(student[key]));
+
+			tr.appendChild(td);
+		}
+		
+		student_list.appendChild(tr);
+	}
+}
+
+update_student_list();
 
 
 
