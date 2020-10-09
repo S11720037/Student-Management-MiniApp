@@ -291,7 +291,25 @@ search_student.addEventListener('keydown',(e) =>{
 
 	return false;
 });
-
 //end search student by name
 
+
+//student filter
+const filter_by_faculty = document.querySelector("#filter-by-faculty");
+const filter_by_program_study = document.querySelector("#filter-by-program-study");
+
+for(data of faculties){
+	const parent = document.createElement("option");
+	const child = document.createTextNode(data.name);
+	parent.appendChild(child);
+	filter_by_faculty.appendChild(parent);
+
+	for(program_study of data.sub){
+		const parent = document.createElement("option");
+		const child = document.createTextNode(program_study);
+		parent.appendChild(child);
+		filter_by_program_study.appendChild(parent);
+	}
+
+}
 
