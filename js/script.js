@@ -115,8 +115,8 @@ let students = [
 		nim: '105021810023',
 		name: 'Rem',
 		gender: 'Female',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
+		faculty: 'Ekonomi',
+		program_study: 'Accounting',
 	},
 	// {
 	// 	nim: '105021810024',
@@ -196,7 +196,7 @@ submit_button.addEventListener('click',() => {
 //display all students
 const student_list = document.querySelector("#student-list");
 
-function update_student_list(fiter_name){
+function update_student_list(){
 
 	student_list.innerHTML = "";
 
@@ -212,7 +212,7 @@ function update_student_list(fiter_name){
 			tr.appendChild(td);
 		}
 
-		//action
+		//action, #delete, 
 		let action = document.createElement("td");
 		let trash_icon = `<button type="button" onclick="delete_row(this)" class="btn btn-danger"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/> </svg></button>`
 		action.innerHTML = trash_icon;
@@ -305,14 +305,96 @@ for(i of faculties){
 }
 
 const filter_faculty_button = document.querySelector("#filter-faculty-button");
+
 filter_faculty_button.addEventListener("click",() => {
 	const selected_faculty = filter_by_faculty.options[filter_by_faculty.selectedIndex].value
 
 	//update student list
-	if(selected_faculty != "-- SELECT FACULTY --"){
+	if(selected_faculty == "-- SELECT FACULTY --"){
+		update_student_list();
+	}
+	else{
+		student_list.innerHTML = "";
 
-		// time to rest
+		//filter the student
+		const filtered_students = students.filter((s) => {
+			return s.faculty == selected_faculty;
+			console.log(s.faculty)
+		});
 
+		for(student of filtered_students){
+
+			let tr = document.createElement("tr");
+
+			for(key in student){
+
+				let td = document.createElement("td");
+				td.appendChild(document.createTextNode(student[key]));
+
+				tr.appendChild(td);
+			}
+			
+			//action #delete, 
+			let action = document.createElement("td");
+			let trash_icon = `<button type="button" class="btn btn-danger" disabled title="Students Filter Are Only For View Data"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/> </svg></button>`
+			action.innerHTML = trash_icon;
+			tr.appendChild(action);
+
+			student_list.appendChild(tr);
+		}
+	}
+});
+
+const filter_by_program_study = document.querySelector("#filter-by-program-study");
+
+for(i of faculties){
+
+	for(j of i.sub){
+		const parent = document.createElement("option");
+		const child = document.createTextNode(j);
+		parent.append(child);
+		filter_by_program_study.appendChild(parent);
+	}
+}
+
+const filter_program_study_button = document.querySelector("#filter-program-study-button");
+
+filter_program_study_button.addEventListener("click",() => {
+	const selected_program_study = filter_by_program_study.options[filter_by_program_study.selectedIndex].value
+
+	//update student list
+	if(selected_program_study == "-- SELECT PROGRAM STUDY --"){
+		update_student_list();
+	}
+	else{
+		student_list.innerHTML = "";
+
+		//filter the student
+		const filtered_students = students.filter((s) => {
+			return s.program_study == selected_program_study;
+			console.log(s.faculty)
+		});
+
+		for(student of filtered_students){
+
+			let tr = document.createElement("tr");
+
+			for(key in student){
+
+				let td = document.createElement("td");
+				td.appendChild(document.createTextNode(student[key]));
+
+				tr.appendChild(td);
+			}
+			
+			//action #delete, 
+			let action = document.createElement("td");
+			let trash_icon = `<button type="button" class="btn btn-danger" disabled title="Students Filter Are Only For View Data"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/> </svg></button>`
+			action.innerHTML = trash_icon;
+			tr.appendChild(action);
+
+			student_list.appendChild(tr);
+		}
 	}
 });
 
