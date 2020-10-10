@@ -174,6 +174,11 @@ submit_button.addEventListener('click',() => {
 		return;
 	}
 
+	if(students.map((s) => s.nim).includes(student_nim) == true){
+		alert(`Duplicate NIM Detected!`);
+		return;
+	}
+
 	//append valid form data to student list
 	students.push({
 		nim: student_nim,
