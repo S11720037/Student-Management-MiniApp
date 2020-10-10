@@ -184,7 +184,7 @@ submit_button.addEventListener('click',() => {
 	});
 
 	//update student list and reset form data
-	alert("Success");
+	alert(`${student_name} added.`);
 	update_student_list();
 	document.querySelector("form").reset();
 
