@@ -227,18 +227,25 @@ update_student_list();
 
 //delete row
 function delete_row(btn) {
+
 	var row = btn.parentNode.parentNode;
 
+	student_name = row.getElementsByTagName("td")[1].textContent;
 	student_nim = (row.querySelector("tr td").textContent);
 
-	students = students.filter((s) =>{
-		return s.nim != student_nim;
-	});
+	const confirm_delete = confirm(`Are You Sure To Delete ${student_name}?`);
+ 
+	if(confirm_delete == true){		
+		students = students.filter((s) =>{
+			return s.nim != student_nim;
+		});
 
-	update_student_list();
+		update_student_list();
 
-	//don't forget to reset input text
-	document.querySelector("#search-student-form").reset();
+		//don't forget to reset input text
+		document.querySelector("#search-student-form").reset();
+	}
+
 
 }
 //end delete row
