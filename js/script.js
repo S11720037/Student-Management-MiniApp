@@ -1,3 +1,100 @@
+const faculties = [
+	{
+		name:"Fakultas Ilmu Komputer",
+		sub: ['Informatika', 'Sistem Informasi']
+	},
+	{
+		name:"Pascasarjana",
+		sub: ['Magister Manajemen','Magister Teologi']
+	},
+	{
+		name:"Fakultas Filsafat",
+		sub: ['Ilmu Filsafat']
+	},
+	{
+		name:"Fakultas Keguruan dan Ilmu Pendidikan",
+		sub: [
+			'Pendidikan Agama',
+			' Pendidikan Bahasa Inggris',
+			' Pendidikan Ekonomi',
+			'Pendidikan Luar Sekolah'
+			]
+	},
+	{
+		name:"Fakultas Ekonomi dan Bisnis",
+		sub: ['Akuntansi', 'Manejemen']
+	},
+	{
+		name:"Fakultas Pertanian",
+		sub: ['Agroteknologi']
+	},
+	{
+		name:"Fakultas Filsafat",
+		sub: ['Ilmu Filsafat']
+	},
+	{
+		name:"Fakultas Keperawatan",
+		sub: ['Profesi Ners', 'Keperawatan']
+	},
+	{
+		name:"Fakultas Filsafat",
+		sub: ['Ilmu Filsafat']
+	},
+]
+
+let students = [
+	{
+		nim: '105021810020',
+		name: 'Tendean Arter',
+		gender: 'Male',
+		faculty: 'Fakultas Ilmu Komputer',
+		program_study: 'Informatika',
+	},
+	{
+		nim: '105021810021',
+		name: 'John Doe',
+		gender: 'Male',
+		faculty: 'Fakultas Ilmu Komputer',
+		program_study: 'Informatika',
+	},
+	{
+		nim: '105021810022',
+		name: 'Jane Doe',
+		gender: 'Female',
+		faculty: 'Fakultas Ilmu Komputer',
+		program_study: 'Sistem Informasi',
+	},
+	{
+		nim: '105021810023',
+		name: 'Lorem Ipsum',
+		gender: 'Male',
+		faculty: 'Fakultas Filsafat',
+		program_study: 'Ilmu Filsafat',
+	},
+	// {
+	// 	nim: '105021810024',
+	// 	name: 'Echidna',
+	// 	gender: 'Female',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// },
+	// {
+	// 	nim: '105021810025',
+	// 	name: 'Felix Argyle',
+	// 	gender: 'Male',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// },
+	// {
+	// 	nim: '105021810026',
+	// 	name: 'Ram',
+	// 	gender: 'Female',
+	// 	faculty: 'Computer Science',
+	// 	program_study: 'Informatics',
+	// }
+]
+
+
 // show hide form
 const show_hide_form = document.querySelector("#show-hide-button");
 const form = document.querySelector("form");
@@ -17,28 +114,6 @@ show_hide_form.addEventListener("click", function(){
 
 
 //faculties and program study
-const faculties = [
-	{
-		name:"Computer Science",
-		sub: ['Information Systems','Informatics']
-	},
-	{
-		name:"Ekonomi",
-		sub: ['Management','Accounting']
-	},
-	{
-		name:"Anime Summer 2020",
-		sub: [
-			'Re:Zero kara Hajimeru Isekai Seikatsu 2nd Season',
-			'The God of Highschool',
-			'Yahari Ore no Seishun Love Comedy wa Machigatteiru. Kan',
-			'Kanojo, Okarishimasu',
-			'Maou Gakuin no Futekigousha: Shijou Saikyou no Maou no Shiso, Tensei shite Shison-tachi no Gakkou e',
-			'Sword Art Online: Alicization - War of Underworld 2nd Season',
-		]
-	},
-]
-
 const faculty_option = document.querySelector("#faculty-form");
 
 for(faculty of faculties){
@@ -87,59 +162,6 @@ faculty_option.addEventListener('change',function(e){
 	}
 });
 //end faculties and program study
-
-
-let students = [
-	{
-		nim: '105021810020',
-		name: 'Tendean Arter',
-		gender: 'Male',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	},
-	{
-		nim: '105021810021',
-		name: 'Emilia',
-		gender: 'Female',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	},
-	{
-		nim: '105021810022',
-		name: 'Subaru Natsuki',
-		gender: 'Male',
-		faculty: 'Computer Science',
-		program_study: 'Informatics',
-	},
-	{
-		nim: '105021810023',
-		name: 'Rem',
-		gender: 'Female',
-		faculty: 'Ekonomi',
-		program_study: 'Accounting',
-	},
-	// {
-	// 	nim: '105021810024',
-	// 	name: 'Echidna',
-	// 	gender: 'Female',
-	// 	faculty: 'Computer Science',
-	// 	program_study: 'Informatics',
-	// },
-	// {
-	// 	nim: '105021810025',
-	// 	name: 'Felix Argyle',
-	// 	gender: 'Male',
-	// 	faculty: 'Computer Science',
-	// 	program_study: 'Informatics',
-	// },
-	// {
-	// 	nim: '105021810026',
-	// 	name: 'Ram',
-	// 	gender: 'Female',
-	// 	faculty: 'Computer Science',
-	// 	program_study: 'Informatics',
-	// }
-]
 
 
 //get all from data
