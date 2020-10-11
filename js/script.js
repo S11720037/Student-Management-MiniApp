@@ -15,8 +15,8 @@ const faculties = [
 		name:"Fakultas Keguruan dan Ilmu Pendidikan",
 		sub: [
 			'Pendidikan Agama',
-			' Pendidikan Bahasa Inggris',
-			' Pendidikan Ekonomi',
+			'Pendidikan Bahasa Inggris',
+			'Pendidikan Ekonomi',
 			'Pendidikan Luar Sekolah'
 			]
 	},
@@ -177,7 +177,7 @@ submit_button.addEventListener('click',() => {
 	
 	//validating form data
 	if(/^\d+$/.test(student_nim) != true){
-		alert("Invalin Student NIM");
+		alert("Invalid Student NIM");
 		return;
 	}
 
